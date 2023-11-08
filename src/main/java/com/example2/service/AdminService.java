@@ -18,9 +18,9 @@ public class AdminService {
     private AdminRepository adminJpaRepository;
 
   
-    public void addAdmin(Admin admin) {
+    public Admin addAdmin(Admin admin) {
         adminJpaRepository.save(admin);
-        
+       return admin;
                 }
     public void deleteAdmin(int id) {
         try {

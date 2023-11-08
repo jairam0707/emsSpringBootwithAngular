@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.*;
 @Entity
-@Table(name = "admin")
+@Table(name = "user")
 @Getter
 @Setter
 @NoArgsConstructor

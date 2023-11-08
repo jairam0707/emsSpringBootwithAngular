@@ -15,8 +15,9 @@ public class AdminController {
 	@Autowired
     private AdminService adminJpaService;
 @PostMapping("/admin/add")
-    public void addAdmin(@RequestBody Admin admin) {
-    	adminJpaService.addAdmin(admin);
+    public Admin addAdmin(@RequestBody Admin admin) {
+    return	adminJpaService.addAdmin(admin);
+    	
     }
 
     @DeleteMapping("/admin/delete/{id}")
