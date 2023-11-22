@@ -1,17 +1,25 @@
 package com.example2.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.stereotype.Service;
+import com.example2.Model.Department;
+import com.example2.Model.Employee;
 
-import com.example2.DTO.EmployeeDTO;
-import com.example2.model.Employee;
-@Service
-public interface EmployeeService
+
+
+
+
+public interface EmployeeService 
 {
-  Employee addEmployee(Employee employee);
-   List<Employee> getallEmployee();
-   public Employee updateEmployee(int employeeid, Employee employee);
-   public String deleteEmployee(int employeeid);
-   public Employee getEmployeeById(int id) ;
+	
+	List<Employee> getEmployees();
+	Employee getEmployeeById(int id);
+	Employee updateEmployee(int id,Employee employee);
+	Employee deleteEmployee(int id, Employee employee);
+	Employee addEmployee( Employee employee);
+	//String assignDepartmentToEmployee(int did, int eid);
+	Department getEmployeeDepartment(int emp_id);
+	Employee addEmployeeToDepartment(int id, int emp_id);
 }

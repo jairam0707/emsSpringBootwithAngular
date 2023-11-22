@@ -1,96 +1,128 @@
-package com.example2.model;
-import jakarta.persistence.Column;
-import jakarta.persistence.*;
-import jakarta.persistence.Id;
+package com.example2.Model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+
+
 
 @Entity
-@Table(name="employee")
-public class Employee {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="employee_id",length=45)
-	private int employeeid;
-	
-	@Column(name="employee_name",length=45)
-	private String employeename;
-	
-	@Column(name="address",length=45)
-	private String address;
-	
-	@Column(name="mobile",length=45)
-	private int mobile;
-	
-	@Column(name="employee_gender",length=20)
-	private String employeegender;
-	
-	@Column(name="employe_salary",length=45)
-	private float salary =0;
 
-	public Employee(int employeeid, String employeename, String address, int mobile, String employeegender,
-			float salary) {
-		super();
-		this.employeeid = employeeid;
-		this.employeename = employeename;
-		this.address = address;
-		this.mobile = mobile;
-		this.employeegender = employeegender;
-		this.salary = salary;
-	}
+@Table(name = "employee")
+public class Employee
+{
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    @Column(length = 10)
+	    private int emp_id;
 
-	public int getEmployeeid() {
-		return employeeid;
-	}
+	    @Column(length = 50)
+	    private String emp_name;
 
-	public void setEmployeeid(int employeeid) {
-		this.employeeid = employeeid;
-	}
+	    @Column(unique = true)
+	    private String emp_email;
 
-	public String getEmployeename() {
-		return employeename;
-	}
+	    @Column(unique = true)
+	    private String emp_phone_no;
 
-	public void setEmployeename(String employeename) {
-		this.employeename = employeename;
-	}
+	    @Column(length = 20)
+	    private String gender;
 
-	public String getAddress() {
-		return address;
-	}
+	    @Column(length = 15)
+	    private String salary;
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	    // Change: Removed @JsonIgnore from here
+	    @JsonIgnore
+	    @ManyToOne
+	    @JoinColumn(name = "dept_id")
+	    private Department department;
 
-	public int getMobile() {
-		return mobile;
-	}
+		public int getEmp_id() {
+			return emp_id;
+		}
 
-	public void setMobile(int mobile) {
-		this.mobile = mobile;
-	}
+		public void setEmp_id(int emp_id) {
+			this.emp_id = emp_id;
+		}
 
-	public String getEmployeegender() {
-		return employeegender;
-	}
+		public String getEmp_name() {
+			return emp_name;
+		}
 
-	public void setEmployeegender(String employeegender) {
-		this.employeegender = employeegender;
-	}
+		public void setEmp_name(String emp_name) {
+			this.emp_name = emp_name;
+		}
 
-	public float getSalary() {
-		return salary;
-	}
+		public String getEmp_email() {
+			return emp_email;
+		}
 
-	public void setSalary(float salary) {
-		this.salary = salary;
-	}
+		public void setEmp_email(String emp_email) {
+			this.emp_email = emp_email;
+		}
 
-	public Employee() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
-	
+		public String getEmp_phone_no() {
+			return emp_phone_no;
+		}
+
+		public void setEmp_phone_no(String emp_phone_no) {
+			this.emp_phone_no = emp_phone_no;
+		}
+
+		public String getGender() {
+			return gender;
+		}
+
+		public void setGender(String gender) {
+			this.gender = gender;
+		}
+
+		public String getSalary() {
+			return salary;
+		}
+
+		public void setSalary(String salary) {
+			this.salary = salary;
+		}
+
+		public Department getDepartment() {
+			return department;
+		}
+
+		public void setDepartment(Department department) {
+			this.department = department;
+		}
+
+		public Employee(int emp_id, String emp_name, String emp_email, String emp_phone_no, String gender,
+				String salary, Department department) {
+			super();
+			this.emp_id = emp_id;
+			this.emp_name = emp_name;
+			this.emp_email = emp_email;
+			this.emp_phone_no = emp_phone_no;
+			this.gender = gender;
+			this.salary = salary;
+			this.department = department;
+		}
+
+		public Employee() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+	    
 }
